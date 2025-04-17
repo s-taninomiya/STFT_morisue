@@ -1,4 +1,5 @@
-sample = 'parukia.wav'; % 
-[y, Fs] = audioread(sample); % 
+voiceData = 'parukia.wav'; % 
+[y, Fs] = audioread(voiceData); % 
+% sound(y, Fs);
 
 
