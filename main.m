@@ -34,5 +34,3 @@ end
 % ハン窓を掛けた信号の行列をフーリエ変換する
 transformedSignals = fft(windowedSignals);
 
-
-
