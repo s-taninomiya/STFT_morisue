@@ -20,10 +20,8 @@ timeFrames = ceil((2 * signalLength - windowLength) / (2 * shiftLength)) + 1;
 % 信号を入れる行列を定義
 separatedSignals = zeros(windowLength, timeFrames);
 windowedSignals = zeros(windowLength, timeFrames);
-transformedSignals = zeros(windowLength, timeFrames);
 
 % ハン窓の作成
-hannWindow = zeros(windowLength, 1);
 hannWindowAxis = (1:windowLength).';
 hannWindow = 0.5 - 0.5 * cos(2 * pi * hannWindowAxis / windowLength);
 plot(hannWindowAxis, hannWindow);
