@@ -34,7 +34,7 @@ for i = 1 : timeFrames
     transformedSignals(:, i) = fft(windowedSignals(:, i));
 end
 
-
+poweredSignals = power(abs(transformedSignals), 2);
 
 
 
