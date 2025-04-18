@@ -9,7 +9,7 @@ voiceData = 'parukia.wav';
 windowLength = 4096;
 shiftLength = windowLength / 2;
 
-% ゼロパディング
+% 信号にゼロパディング
 complementedInputSignal = padarray(inputSignal, windowLength / 2, 0, "pre");
 complementedInputSignal = padarray(complementedInputSignal, shiftLength - 1, 0, "post");
 
@@ -22,13 +22,16 @@ separatedSignals = zeros(windowLength, timeFrames);
 windowedSignals = zeros(windowLength, timeFrames);
 transformedSignals = zeros(windowLength, timeFrames);
 
-% 行列に信号を順番に代入し，ハン窓を掛ける
+% ハン窓の作成
+hannWindow = zeros(windowLength, 1);
+hannWindowAxis = (1:windowLength).';
+hannWindow = 0.5 - 0.5 * cos(2 * pi * hannWindowAxis / windowLength);
+plot(hannWindowAxis, hannWindow);
+
+% 行列に信号を列単位(ベクトル)で代入し，ハン窓を掛ける
 for i = 1 : timeFrames
-    for j = 1 : windowLength
-        separatedSignals(j, i) = complementedInputSignal((i - 1) * shiftLength + j);
-        hannWindow = 0.5 - 0.5 * cos(2 * pi * j / windowLength);
-        windowedSignals(j, i) = separatedSignals(j, i) * hannWindow;
-    end
+    separatedSignals(:, i) = complementedInputSignal((i - 1) * shiftLength + 1: (i - 1) * shiftLength + windowLength, 1);
+    windowedSignals(:, i) = separatedSignals(:, i) .* hannWindow;
 end
 
 % ハン窓を掛けた信号の行列をフーリエ変換する
