@@ -35,6 +35,7 @@ for i = 1 : timeFrames
 end
 
 poweredSignals = power(abs(transformedSignals), 2);
+signalsGain = 10 * log10(poweredSignals);
 
 
 
