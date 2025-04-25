@@ -36,8 +36,13 @@ end
 poweredSignals = power(abs(transformedSignals), 2);
 signalsGain = 10 * log10(poweredSignals);
 
-time = size(complementedInputSignal, 1) / fs;
-imagesc(time, fs, signalsGain);
+% x軸(時間軸)の計算
+time = signalLength / fs;
+
+% スペクトログラムの表示
+imagesc([0, time], [0, fs], signalsGain);
+axis xy;
+ylim([0, fs / 2]);
 xlabel("Time [s]");
 ylabel("Frequency [Hz]");
 c = colorbar;
