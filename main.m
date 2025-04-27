@@ -36,10 +36,24 @@ end
 poweredSignals = power(abs(transformedSignals), 2);
 signalsGain = 10 * log10(poweredSignals);
 
+<<<<<<< HEAD
 %time = size(complementedInputSignal, 1) / fs;
 %imagesc(time, fs, signalsGain);
 %xlabel("Time [s]");
 %ylabel("Frequency [Hz]");
 %c = colorbar;
 %c.Label.String = ("Gain [dB]");
+=======
+% x軸(時間軸)の計算
+time = signalLength / fs;
+
+% スペクトログラムの表示
+imagesc([0, time], [0, fs], signalsGain);
+axis xy;
+ylim([0, fs / 2]);
+xlabel("Time [s]");
+ylabel("Frequency [Hz]");
+c = colorbar;
+c.Label.String = ("Gain [dB]");
+>>>>>>> f79e612ec319ade41057f49449cb9896442b1f05
 
