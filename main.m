@@ -36,10 +36,10 @@ end
 poweredSignals = power(abs(transformedSignals), 2);
 signalsGain = 10 * log10(poweredSignals);
 
-time = size(complementedInputSignal, 1) / fs;
-imagesc(time, fs, signalsGain);
-xlabel("Time [s]");
-ylabel("Frequency [Hz]");
-c = colorbar;
-c.Label.String = ("Gain [dB]");
+%time = size(complementedInputSignal, 1) / fs;
+%imagesc(time, fs, signalsGain);
+%xlabel("Time [s]");
+%ylabel("Frequency [Hz]");
+%c = colorbar;
+%c.Label.String = ("Gain [dB]");
 
