@@ -1,8 +1,8 @@
 clear; close all; clc;
 
 % 音声ファイルの読み込み
-voiceData = 'parukia.wav';
-[inputSignal, fs] = audioread(voiceData);
+inputFileName = 'parukia.wav';
+[inputSignal, fs] = audioread(inputFileName);
 
 % 窓長・シフト長を定義
 windowLength = 4096;
